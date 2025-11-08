@@ -52,7 +52,7 @@
       <body name="servos_rf_1" pos="-0.044433 0.00142 -0.011906">
         <joint name="shrft_joint" pos="0 0 0" axis="0 1 0" />
         <geom pos="-0.008067 0.04708 -0.010094" quat="1 0 0 0" type="mesh" rgba="0.7 0.7 0.7 1" mesh="servos_rf_1" />
-        <geom pos="-0.008067 0.04708 -0.010094" quat="1 0 0 0" type="mesh" rgba="0.7 0.7 0.7 1" mesh="shank_rf_1" />
+        <geom pos="-0.008067 0.04708 -0.010094" quat="1 0 0 0" type="mesh" rgba="0.7 0.7 0.7 1" mesh="shank_rf_1_convex" />
         <geom pos="-0.008067 0.04708 -0.010094" type="mesh" rgba="0.7 0.7 0.7 1" mesh="screw_9_1" />
         <geom pos="-0.008067 0.04708 -0.010094" type="mesh" rgba="0.7 0.7 0.7 1" mesh="screw_8_1" />
       </body>
@@ -69,7 +69,7 @@
       <body name="servos_rr_1" pos="-0.044433 0.00142 -0.011906">
         <joint name="shrrt_joint" pos="0 0 0" axis="0 1 0" />
         <geom pos="0.096933 0.04708 -0.010094" quat="1 0 0 0" type="mesh" rgba="0.7 0.7 0.7 1" mesh="servos_rr_1" />
-        <geom pos="0.096933 0.04708 -0.010094" quat="1 0 0 0" type="mesh" rgba="0.7 0.7 0.7 1" mesh="shank_rr_1" />
+        <geom pos="0.096933 0.04708 -0.010094" quat="1 0 0 0" type="mesh" rgba="0.7 0.7 0.7 1" mesh="shank_rr_1_convex" />
         <geom pos="0.096933 0.04708 -0.010094" type="mesh" rgba="0.7 0.7 0.7 1" mesh="screw_19_1" />
         <geom pos="0.096933 0.04708 -0.010094" type="mesh" rgba="0.7 0.7 0.7 1" mesh="screw_11_1" />
       </body>
@@ -94,7 +94,7 @@
       <body name="servos_lf_1" pos="-0.044433 -0.00142 -0.011906">
         <joint name="shlft_joint" pos="0 0 0" axis="0 1 0" />
         <geom pos="-0.008067 -0.04708 -0.010094" quat="1 0 0 0" type="mesh" rgba="0.7 0.7 0.7 1" mesh="servos_lf_1" />
-        <geom pos="-0.008067 -0.04708 -0.010094" quat="1 0 0 0" type="mesh" rgba="0.7 0.7 0.7 1" mesh="shank_lf_1" />
+        <geom pos="-0.008067 -0.04708 -0.010094" quat="1 0 0 0" type="mesh" rgba="0.7 0.7 0.7 1" mesh="shank_lf_1_convex" />
         <geom pos="-0.008067 -0.04708 -0.010094" type="mesh" rgba="0.7 0.7 0.7 1" mesh="screw_2_1" />
         <geom pos="-0.008067 -0.04708 -0.010094" type="mesh" rgba="0.7 0.7 0.7 1" mesh="screw_20_1" />
       </body>
@@ -111,7 +111,7 @@
       <body name="servos_lr_1" pos="-0.044433 -0.001418 -0.011906">
         <joint name="shlrt_joint" pos="0 0 0" axis="0 1 0" />
         <geom pos="0.096933 -0.047082 -0.010094" quat="1 0 0 0" type="mesh" rgba="0.7 0.7 0.7 1" mesh="servos_lr_1" />
-        <geom pos="0.096933 -0.047082 -0.010094" quat="1 0 0 0" type="mesh" rgba="0.7 0.7 0.7 1" mesh="shank_lr_1" />
+        <geom pos="0.096933 -0.047082 -0.010094" quat="1 0 0 0" type="mesh" rgba="0.7 0.7 0.7 1" mesh="shank_lr_1_convex" />
         <geom pos="0.096933 -0.047082 -0.010094" type="mesh" rgba="0.7 0.7 0.7 1" mesh="screw_3_1" />
         <geom pos="0.096933 -0.047082 -0.010094" type="mesh" rgba="0.7 0.7 0.7 1" mesh="screw_12_1" />
       </body>

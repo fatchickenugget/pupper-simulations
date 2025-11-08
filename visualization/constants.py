@@ -13,3 +13,4 @@ BITTLE_XACRO_PATH = "../assets/descriptions/bittle/xacro/bittle.xacro"
 
 #Whether to load environment or just the robot MJCF
 LOAD_ENV = False
+REGENERATE_MJCF = True

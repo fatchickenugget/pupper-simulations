@@ -11,7 +11,7 @@ import constants
 
 if __name__ == "__main__":
     # If MJCF file does not exist, convert from URDF
-    if not os.path.exists(constants.BITTLE_MJCF_ASSETS_PATH) or not os.path.exists(constants.BITTLE_MJCF_BODY_PATH):
+    if not os.path.exists(constants.BITTLE_MJCF_ASSETS_PATH) or not os.path.exists(constants.BITTLE_MJCF_BODY_PATH) or constants.REGENERATE_MJCF:
         logger.info("MJCF asset and body files not found, converting from URDF...")
         convert_to_MJCF(constants.BITTLE_URDF_PATH, constants.BITTLE_MJCF_PATH, 
         constants.BITTLE_MJCF_ASSETS_PATH, constants.BITTLE_MJCF_BODY_PATH)

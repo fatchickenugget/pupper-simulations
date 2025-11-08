@@ -22,7 +22,7 @@ Converts URDF model to MJCF, which is Mujoco compatible
 (Model is converted as a standalone file, not an asset file)
 '''
 def convert_to_MJCF(URDF_PATH:str, MJCF_PATH:str, ASSET_PATH:str, BODY_PATH:str) -> None:
-    if not os.path.exists(MJCF_PATH):
+    if not os.path.exists(MJCF_PATH) or cosntants.REGENERATE_MJCF:
         logger.info(f"MJCF file not found at {MJCF_PATH}, converting from URDF at {URDF_PATH}")
 
         # Loads URDF model into memory and saves as MJCF
