@@ -5,3 +5,5 @@ renderingEnv/
 
 
 __pycache__/
+
+MUJOCO_LOG.TXT
