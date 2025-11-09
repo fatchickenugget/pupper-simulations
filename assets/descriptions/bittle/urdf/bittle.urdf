@@ -1145,7 +1145,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="-0.038977 0.050355 -0.018377"/>
       <geometry>
-        <mesh filename="tho_rf__1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="tho_rf__1_collision.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -1185,7 +1185,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="-0.02915 0.052607 -0.02028"/>
       <geometry>
-        <mesh filename="tube__1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="tube__1_collision.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -1205,7 +1205,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="-0.0525 0.0508 -0.022"/>
       <geometry>
-        <mesh filename="th_rf_1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="th_rf_1_collision.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -1225,7 +1225,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="-0.008067 0.054937 -0.010094"/>
       <geometry>
-        <mesh filename="c_thorf_1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="c_thorf_1_collision.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -1406,7 +1406,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="-0.0525 0.0485 -0.022"/>
       <geometry>
-        <mesh filename="c_thrf__1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="c_thrf__1_collision.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -1586,7 +1586,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0.066023 0.050355 -0.018377"/>
       <geometry>
-        <mesh filename="tho_rr_1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="tho_rr_1_collision.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -1606,7 +1606,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0.07585 0.052607 -0.02028"/>
       <geometry>
-        <mesh filename="tube_rr_1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="tube_rr_1_collision.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -1626,7 +1626,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0.0525 0.0508 -0.022"/>
       <geometry>
-        <mesh filename="th_rr_1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="th_rr_1_collision.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -1646,7 +1646,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0.096933 0.054937 -0.010094"/>
       <geometry>
-        <mesh filename="c_thorr_1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="c_thorr_1_collision.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -1686,7 +1686,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0.0525 0.0485 -0.022"/>
       <geometry>
-        <mesh filename="c_thrr_1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="c_thrr_1_collision.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -1726,7 +1726,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="-0.038977 -0.050355 -0.018377"/>
       <geometry>
-        <mesh filename="tho_lf_1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="tho_lf_1_collision.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -1746,7 +1746,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="-0.02915 -0.052607 -0.02028"/>
       <geometry>
-        <mesh filename="tube_lf_1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="tube_lf_1_collision.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -1766,7 +1766,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="-0.0525 -0.0508 -0.022"/>
       <geometry>
-        <mesh filename="th_lf_1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="th_lf_1_collision.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -1786,7 +1786,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="-0.008067 -0.054937 -0.010094"/>
       <geometry>
-        <mesh filename="c_tholf_1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="c_tholf_1_collision.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -1826,7 +1826,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="-0.0525 -0.0485 -0.022"/>
       <geometry>
-        <mesh filename="c_thlf_1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="c_thlf_1_collision.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -1866,7 +1866,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0.066023 -0.050357 -0.018377"/>
       <geometry>
-        <mesh filename="tho_lr_1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="tho_lr_1_collision.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -1886,7 +1886,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0.07585 -0.052609 -0.02028"/>
       <geometry>
-        <mesh filename="tube_lr_1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="tube_lr_1_collision.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -1906,7 +1906,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0.0525 -0.050802 -0.022"/>
       <geometry>
-        <mesh filename="th_lr__1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="th_lr__1_collision.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -1926,7 +1926,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0.096933 -0.054939 -0.010094"/>
       <geometry>
-        <mesh filename="c_tholr__1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="c_tholr__1_collision.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -1966,7 +1966,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0.0525 -0.0485 -0.022"/>
       <geometry>
-        <mesh filename="c_thlr_1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="c_thlr_1_collision.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
