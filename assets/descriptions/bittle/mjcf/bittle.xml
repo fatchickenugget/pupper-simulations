@@ -305,7 +305,7 @@
     <position joint="shrrs_joint" ctrlrange="-3.1416 3.1416" kp="5.0"/>
     <position joint="shrrt_joint" ctrlrange="-3.1416 3.1416" kp="5.0"/>
     <position joint="neck_joint" ctrlrange="-3.1416 3.1416" kp="5.0"/>
-    <position joint="shlfs_joint" ctrlrange="-3.1416 3.1416" kp="5.0"/>
+    <position joint="shlfs_joint" ctrlrange="0 6.28" kp="15.0" kv= "0.8"/>
     <position joint="shlft_joint" ctrlrange="-3.1416 3.1416" kp="5.0"/>
     <position joint="shlrs_joint" ctrlrange="-3.1416 3.1416" kp="5.0"/>
     <position joint="shlrt_joint" ctrlrange="-3.1416 3.1416" kp="5.0"/>
