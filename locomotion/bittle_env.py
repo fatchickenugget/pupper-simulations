@@ -274,12 +274,16 @@ class BittleEnv(PipelineEnv):
     reward = jp.clip(sum(rewards.values()) * self.dt, 0.0, 10000.0)
 
     # Print reward every 1000 iterations
+    '''
     jax.lax.cond(
         state.info['step'] % 1000 == 0,
         lambda: jax.debug.print("Step {step}: Reward = {reward}", 
                                 step=state.info['step'], reward=reward),
         lambda: None
     )
+    '''
+    if state.info['step'] % 1000 == 0:
+        print(f"Step {state.info['step']}: Reward = {reward}")
 
     state.info['last_act'] = action
     state.info['last_vel'] = joint_vel
