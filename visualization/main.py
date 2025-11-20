@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
     if constants.LOAD_ENV:
         # Load environment model into memory
-        model = mujoco.MjModel.from_xml_path(constants.BITTLE_ENVIRONMENT_PATH)
+        model = mujoco.MjModel.from_xml_path(constants.BITTLE_MJCF_PATH)
     else:
         #Load the bittle model into memory
         #model = mujoco.MjModel.from_xml_path(constants.BITTLE_MJCF_PATH)

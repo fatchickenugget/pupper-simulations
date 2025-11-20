@@ -7,8 +7,6 @@ This environment modifies the BarkourEnv logic to work with:
 - 2 DOF per leg (8 leg actuators) + 1 neck actuator
 - Simplified contact detection based on body positions instead of sites
 - No additional bodies or joints added
-
-The robot structure remains EXACTLY as defined in your original XML.
 """
 
 from typing import Any, List, Sequence

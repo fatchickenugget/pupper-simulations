@@ -1,3 +1,6 @@
+'''
+Helper script to test whether the environment builds or not
+'''
 from bittle_env import BittleEnv
 
 from brax import envs
@@ -7,4 +10,8 @@ envs.register_environment('bittle', BittleEnv)
 env_name = 'bittle'
 xml_path = 'bittle_adapted_scene.xml'
 
-env = envs.get_environment(env_name, xml_path = xml_path)
+try:
+    env = envs.get_environment(env_name, xml_path = xml_path)
+    print(f"Successfully built environment {env_name} from {xml_path}")
+except:
+    print(f"Failed to build environment {env_name} from {xml_path}")
