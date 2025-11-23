@@ -277,6 +277,14 @@ class BittleEnv(PipelineEnv):
     # Replace NaN with 0 to prevent training crashes
     reward = jp.nan_to_num(reward, nan=0.0, posinf=0.0, neginf=0.0)
 
+    # Only print every 100 steps to avoid spam
+    jax.lax.cond(
+        state.info['step'] % 100 == 0,
+        lambda: jax.debug.print("Step {s}, Reward {r:.3f}, Done {d}", 
+                               s=state.info['step'], r=reward, d=done),
+        lambda: None
+    )
+
     state.info['last_act'] = action
     state.info['last_vel'] = joint_vel
     state.info['feet_air_time'] *= ~contact_filt
