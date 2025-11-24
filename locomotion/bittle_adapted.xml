@@ -102,7 +102,7 @@
   </asset>
 
   <worldbody>
-    <body name="base" pos="0 0 0.5">
+    <body name="base" pos="0 0 0.1">
     <freejoint/>
       <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.7 0.7 0.7 1" mesh="base_link"/>
       <geom type="mesh" contype="0" conaffinity="0" rgba="0.7 0.7 0.7 1" mesh="base_link"/>
