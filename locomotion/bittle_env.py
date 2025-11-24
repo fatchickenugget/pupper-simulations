@@ -60,18 +60,20 @@ def get_config():
   
   return default_config
 
-def print_environments_at_milestone(step, reward, done, milestone=100):
-    """Print info for all environments at the milestone step"""
+def print_milestone_info(step, reward, done, milestone=100):
     mask = step % milestone == 0
-    if jp.any(mask):
-        env_indices = jp.where(mask, size=mask.shape[0], fill_value=-1)[0]
-        # Print each environment that hit the milestone
-        for i in range(mask.shape[0]):
-            if mask[i]:
-                jax.debug.print(
-                    "Env {env}: Step {s}, Reward {r:.3f}, Done {d}",
-                    env=i, s=step[i], r=reward[i], d=done[i]
-                )
+    
+    jax.lax.cond(
+        jp.any(mask),
+        lambda: jax.debug.print(
+            "Milestone {m} reached:\nEnvs: {envs}\nRewards: {rewards}\nDones: {dones}",
+            m=milestone,
+            envs=jp.where(mask)[0],
+            rewards=jp.where(mask, reward, 0.0),  # Show only milestone rewards
+            dones=jp.where(mask, done, False)
+        ),
+        lambda: None
+    )
 
 class BittleEnv(PipelineEnv):
   """Environment for Bittle quadruped using its actual structure."""
@@ -289,13 +291,7 @@ class BittleEnv(PipelineEnv):
     # Replace NaN with 0 to prevent training crashes
     reward = jp.nan_to_num(reward, nan=0.0, posinf=0.0, neginf=0.0)
 
-    jax.lax.cond(
-        jp.any(state.info['step'] % 100 == 0),
-        lambda: print_environments_at_milestone(
-            state.info['step'], reward, done, milestone=100
-        ),
-        lambda: None
-    )
+    print_milestone_info(state.info['step'], reward, done, milestone=100)
 
     state.info['last_act'] = action
     state.info['last_vel'] = joint_vel
