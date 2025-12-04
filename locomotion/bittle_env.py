@@ -31,20 +31,20 @@ def get_config():
                     tracking_lin_vel=1.5,
                     tracking_ang_vel=0.8,
                     # Base state regularizations
-                    lin_vel_z=-2.0,
-                    ang_vel_xy=-0.05,
+                    #lin_vel_z=-2.0,
+                    #ang_vel_xy=-0.05,
                     orientation=-5.0,
                     # Joint regularizations
-                    torques=-0.0002,
-                    action_rate=-0.01,
+                    #torques=-0.0002,
+                    #action_rate=-0.01,
                     # Behavior regularizations
-                    stand_still=-0.5,
+                    #stand_still=-0.5,
                     termination=-1.0,
                     # Feet rewards
-                    feet_air_time=0.1,
-                    foot_slip=-0.04,
+                    #feet_air_time=0.1,
+                    #foot_slip=-0.04,
                     # Energy efficiency
-                    energy=-0.002,
+                    #energy=-0.002,
                 )
             ),
             tracking_sigma=0.25,
