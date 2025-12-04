@@ -39,7 +39,7 @@ def get_config():
                     #action_rate=-0.01,
                     # Behavior regularizations
                     #stand_still=-0.5,
-                    termination=-1.0,
+                    #termination=-1.0,
                     # Feet rewards
                     #feet_air_time=0.1,
                     #foot_slip=-0.04,
@@ -283,7 +283,7 @@ class BittleEnv(PipelineEnv):
         #    state.info['feet_air_time'], first_contact, state.info['command']
         #),
         #'foot_slip': self._reward_foot_slip(pipeline_state, contact_filt),
-        'termination': self._reward_termination(done, state.info['step']),
+        #'termination': self._reward_termination(done, state.info['step']),
         #'energy': self._reward_energy(joint_vel, pipeline_state.qfrc_actuator),
     }
     
