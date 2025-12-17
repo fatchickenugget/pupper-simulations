@@ -70,7 +70,8 @@ class BittleEnv(PipelineEnv):
       xml_path: str,
       obs_noise: float = 0.05,
       action_scale: float = 5.0,  # Scale for velocity commands (rad/s)
-      kick_vel: float = 0.05,
+      kick_vel: float = 0.00, #Formerly 0.05
+      enable_kicks: bool = False,
       **kwargs,
   ):
     sys = mjcf.load(xml_path)
@@ -96,6 +97,7 @@ class BittleEnv(PipelineEnv):
     self._action_scale = action_scale  # Max velocity in rad/s
     self._obs_noise = obs_noise
     self._kick_vel = kick_vel
+    self._enable_kicks = enable_kicks
     
     self._nv = sys.nv
     self._nu = sys.nu
@@ -212,7 +214,7 @@ class BittleEnv(PipelineEnv):
 
     # Random kick
     kick_vel = jp.where(
-        jax.random.uniform(kick_rng) < 0.001,
+        self._enable_kicks & (jax.random.uniform(kick_rng) < 0.001),
         jax.random.uniform(kick_rng, (3,), minval=-self._kick_vel, maxval=self._kick_vel),
         jp.zeros(3)
     )
