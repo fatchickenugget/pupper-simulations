@@ -1,3 +1,9 @@
+
+
+
+Readme · MD
+Copy
+
 # pupper-simulations
 
 Official repository for the Triton Pupper Simulations team - a robotics simulation project focused on quadruped locomotion using MuJoCo and Brax.
@@ -26,7 +32,7 @@ This project provides simulation and reinforcement learning environments for the
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone 
 cd pupper-simulations
 ```
 
@@ -139,6 +145,44 @@ convert_to_MJCF(urdf_path, mjcf_path, assets_path, body_path)
 - `ml_collections==1.1.0` - Configuration management
 - `mediapy==1.2.4` - Media processing
 
+## Development Workflow
+
+### Working on Locomotion
+
+If you're developing locomotion policies or environment code, follow this workflow:
+
+1. **Create your development branch:**
+```bash
+git checkout -b /locomotion
+git push -u origin /locomotion
+```
+
+2. **Modify the training notebook:**
+
+In `locomotion/training.ipynb`, change the first cell to clone your specific branch:
+
+```python
+!git clone --branch /locomotion --single-branch https://github.com/triton-droids/pupper-simulations.git
+%cd pupper-simulations
+```
+
+Replace `<your-name>` with your actual name (e.g., `oren/locomotion`).
+
+3. **Develop and test:**
+- Make changes to environment code, reward functions, or training parameters
+- Test in Google Colab or locally
+- Commit frequently to your branch
+
+4. **Merge when ready:**
+- Once your locomotion policy is working well, create a pull request to merge into `main`
+- Include training metrics and videos in your PR description
+
+**Why this workflow?** This ensures:
+- Your Colab notebook always pulls your latest code
+- You can experiment freely without affecting others
+- Multiple team members can work on locomotion simultaneously
+- Easy to compare different approaches before merging
+
 ## Known Issues
 
 ### URDF to MJCF Conversion Error
@@ -161,7 +205,7 @@ pip install mujoco==3.3.4
 
 ## Contributing
 
-This is the official repository for the Triton Pupper Simulations team. For contributions, please follow the team's development guidelines.
+This is the official repository for the Triton Pupper Simulations team. For contributions, please follow the team's development guidelines and the branch workflow described above.
 
 ## License
 
