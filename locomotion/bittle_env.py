@@ -1,6 +1,7 @@
 """
 Bittle Quadruped Environment with Direct Velocity Control
 Policy outputs joint velocities, not positions.
+If you're reading this on Google Colab, the file successfully changed
 """
 
 from typing import Any, List, Sequence
