@@ -31,13 +31,13 @@ def get_config():
                     tracking_lin_vel=1.5,
                     tracking_ang_vel=0.8,
                     # Base state regularizations
-                    lin_vel_z=-2.0,
+                    lin_vel_z=-5.0,
                     ang_vel_xy=-0.05,
-                    orientation=-10.0,
+                    orientation=-15.0,
                     # Joint regularizations
                     torques=-0.0002,
-                    action_rate=-0.01,
-                    joint_acc=-0.0025,  # Penalize joint acceleration (for smooth velocity changes)
+                    action_rate=-0.001,
+                    joint_acc=-0.00025,  # Penalize joint acceleration (for smooth velocity changes)
                     # Behavior regularizations
                     stand_still=-0.5,
                     termination=-1.0,
@@ -45,7 +45,7 @@ def get_config():
                     feet_air_time=0.1,
                     foot_slip=-0.04,
                     # Energy efficiency
-                    energy=-0.002,
+                    energy=-0.0002,
                 )
             ),
             tracking_sigma=0.25,
@@ -218,10 +218,27 @@ class BittleEnv(PipelineEnv):
         jax.random.uniform(kick_rng, (3,), minval=-self._kick_vel, maxval=self._kick_vel),
         jp.zeros(3)
     )
+
+    pipeline_state = state.pipeline_state
+
+    joint_angles = pipeline_state.q[self._q_joint_start:]
+    posture_kp = 3.0  # tune 2–5
+    posture_vel = -posture_kp * (joint_angles - self._default_pose)
+
+
     
     # Scale actions to velocity commands (rad/s)
-    velocity_commands = action * self._action_scale
-    velocity_commands = jp.clip(velocity_commands, -self.vel_limit, self.vel_limit)
+    velocity_commands = (
+      action * self._action_scale
+      + posture_vel
+    )
+
+    velocity_commands = jp.clip(
+      velocity_commands,
+      -self._vel_limit,
+      self._vel_limit
+    )
+
     
     # Physics step with velocity commands
     pipeline_state = self.pipeline_step(state.pipeline_state, velocity_commands)
@@ -260,6 +277,7 @@ class BittleEnv(PipelineEnv):
     rewards = {
         'tracking_lin_vel': self._reward_tracking_lin_vel(state.info['command'], x, xd),
         'tracking_ang_vel': self._reward_tracking_ang_vel(state.info['command'], x, xd),
+        'base_height': 8.0 * self._reward_base_height(x),
         'lin_vel_z': self._reward_lin_vel_z(xd),
         'ang_vel_xy': self._reward_ang_vel_xy(xd),
         'orientation': self._reward_orientation(x),
@@ -424,6 +442,13 @@ class BittleEnv(PipelineEnv):
     """Penalize energy consumption."""
     actuator_forces = qfrc_actuator[self._qd_joint_start:]
     return jp.sum(jp.abs(qvel) * jp.abs(actuator_forces))
+  
+  def _reward_base_height(self, x):
+    # Target roughly standing height of Bittle
+    target_height = 0.08  # meters (tune if needed)
+    height = x.pos[self._base_body_id, 2]
+    return jp.exp(-((height - target_height) ** 2) / 0.002)
+
 
   def render(
       self, trajectory: List[base.State], camera: str | None = None,
