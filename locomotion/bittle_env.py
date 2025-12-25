@@ -1,7 +1,6 @@
 """
 Bittle Quadruped Environment with Direct Velocity Control
 Policy outputs joint velocities, not positions.
-If you're reading this on Google Colab, the file successfully changed
 """
 
 from typing import Any, List, Sequence
@@ -35,6 +34,7 @@ def get_config():
                     lin_vel_z=-5.0,
                     ang_vel_xy=-0.05,
                     orientation=-15.0,
+                    base_height=8.0, #Scaling  for base height reward
                     # Joint regularizations
                     torques=-0.0002,
                     action_rate=-0.001,
@@ -278,7 +278,7 @@ class BittleEnv(PipelineEnv):
     rewards = {
         'tracking_lin_vel': self._reward_tracking_lin_vel(state.info['command'], x, xd),
         'tracking_ang_vel': self._reward_tracking_ang_vel(state.info['command'], x, xd),
-        'base_height': 8.0 * self._reward_base_height(x),
+        'base_height': self._reward_base_height(x),
         'lin_vel_z': self._reward_lin_vel_z(xd),
         'ang_vel_xy': self._reward_ang_vel_xy(xd),
         'orientation': self._reward_orientation(x),
