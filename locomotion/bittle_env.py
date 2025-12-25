@@ -132,7 +132,7 @@ class BittleEnv(PipelineEnv):
     self.pos_uppers = jp.array([1.5] * sys.nu)
     
     # Velocity limits (rad/s)
-    self.vel_limit = 10.0  # Should match ctrlrange in MJCF
+    self.vel_limit = 5.0  # Should match ctrlrange in MJCF
     
     # Find lower leg bodies for foot contact detection
     lower_leg_names = [
@@ -235,8 +235,8 @@ class BittleEnv(PipelineEnv):
 
     velocity_commands = jp.clip(
       velocity_commands,
-      -self._vel_limit,
-      self._vel_limit
+      -self.vel_limit,
+      self.vel_limit
     )
 
     
