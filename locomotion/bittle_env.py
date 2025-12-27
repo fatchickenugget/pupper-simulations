@@ -34,6 +34,7 @@ def get_config():
                     lin_vel_z=-5.0,
                     ang_vel_xy=-0.05,
                     orientation=-15.0,
+                    base_height=8.0, #Scaling  for base height reward
                     # Joint regularizations
                     torques=-0.0002,
                     action_rate=-0.001,
@@ -132,7 +133,7 @@ class BittleEnv(PipelineEnv):
     self.pos_uppers = jp.array([1.5] * sys.nu)
     
     # Velocity limits (rad/s)
-    self.vel_limit = 10.0  # Should match ctrlrange in MJCF
+    self.vel_limit = 5.0  # Should match ctrlrange in MJCF
     
     # Find lower leg bodies for foot contact detection
     lower_leg_names = [
@@ -235,8 +236,8 @@ class BittleEnv(PipelineEnv):
 
     velocity_commands = jp.clip(
       velocity_commands,
-      -self._vel_limit,
-      self._vel_limit
+      -self.vel_limit,
+      self.vel_limit
     )
 
     
@@ -277,7 +278,7 @@ class BittleEnv(PipelineEnv):
     rewards = {
         'tracking_lin_vel': self._reward_tracking_lin_vel(state.info['command'], x, xd),
         'tracking_ang_vel': self._reward_tracking_ang_vel(state.info['command'], x, xd),
-        'base_height': 8.0 * self._reward_base_height(x),
+        'base_height': self._reward_base_height(x),
         'lin_vel_z': self._reward_lin_vel_z(xd),
         'ang_vel_xy': self._reward_ang_vel_xy(xd),
         'orientation': self._reward_orientation(x),
