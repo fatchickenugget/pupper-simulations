@@ -225,7 +225,7 @@ class BittleEnv(PipelineEnv):
     joint_angles = pipeline_state.q[self._q_joint_start:]
     posture_kp = 3.0  # tune 2–5
     posture_vel = -posture_kp * (joint_angles - self._default_pose)
-    posture_vel = jp.clip(posture_vel, -self._vel_limit, self._vel_limit)
+    posture_vel = jp.clip(posture_vel, -self.vel_limit, self.vel_limit)
 
 
     
