@@ -225,6 +225,7 @@ class BittleEnv(PipelineEnv):
     joint_angles = pipeline_state.q[self._q_joint_start:]
     posture_kp = 3.0  # tune 2–5
     posture_vel = -posture_kp * (joint_angles - self._default_pose)
+    posture_vel = jp.clip(posture_vel, -self._vel_limit, self._vel_limit)
 
 
     
@@ -293,6 +294,8 @@ class BittleEnv(PipelineEnv):
         'termination': self._reward_termination(done, state.info['step']),
         'energy': self._reward_energy(joint_vel, pipeline_state.qfrc_actuator),
     }
+    
+    jax.debug.print("base_height reward mean: {x}", x=jp.mean(rewards['base_height']))
     
     # Scale rewards
     rewards = {k: v * self.reward_config.rewards.scales[k] for k, v in rewards.items()}
@@ -448,7 +451,10 @@ class BittleEnv(PipelineEnv):
     # Target roughly standing height of Bittle
     target_height = 0.08  # meters (tune if needed)
     height = x.pos[self._base_body_id, 2]
-    return jp.exp(-((height - target_height) ** 2) / 0.002)
+    height = jp.clip(height, 0.0, 0.5)
+    err = height - target_height
+    reward = jp.exp(-jp.minimum(err * err / 0.01, 50.0))
+    return reward
 
 
   def render(
