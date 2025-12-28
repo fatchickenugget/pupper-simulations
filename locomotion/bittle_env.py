@@ -225,7 +225,7 @@ class BittleEnv(PipelineEnv):
     joint_angles = pipeline_state.q[self._q_joint_start:]
     posture_kp = 3.0  # tune 2–5
     posture_vel = -posture_kp * (joint_angles - self._default_pose)
-    posture_vel = jp.clip(posture_vel, -self.vel_limit, self.vel_limit)
+    posture_vel = jp.clip(posture_vel, -1.0, 1.0)
 
 
     
@@ -237,13 +237,26 @@ class BittleEnv(PipelineEnv):
 
     velocity_commands = jp.clip(
       velocity_commands,
-      -self.vel_limit,
-      self.vel_limit
+      -2.0,
+      2.0
     )
 
     
     # Physics step with velocity commands
     pipeline_state = self.pipeline_step(state.pipeline_state, velocity_commands)
+
+    # ------------------------------------------------------------------
+    # NUMERICAL SAFETY GUARD (physics-level, not termination)
+    # ------------------------------------------------------------------
+    height = pipeline_state.x.pos[self._base_body_id, 2]
+
+    pipeline_state = jax.lax.cond(
+        (height > 0.3) | (~jp.isfinite(height)),
+        lambda _: state.pipeline_state,   # revert to last safe state
+        lambda _: pipeline_state,
+        operand=None
+    )
+    # ------------------------------------------------------------------
     
     # Apply kick to base
     pipeline_state = pipeline_state.replace(
@@ -449,11 +462,10 @@ class BittleEnv(PipelineEnv):
   
   def _reward_base_height(self, x):
     # Target roughly standing height of Bittle
-    target_height = 0.08  # meters (tune if needed)
     height = x.pos[self._base_body_id, 2]
-    height = jp.clip(height, 0.0, 0.5)
-    err = height - target_height
-    reward = jp.exp(-jp.minimum(err * err / 0.01, 50.0))
+    height = jp.clip(height, 0.0, 0.2)
+    err = height - 0.08
+    reward = 1.0 - jp.tanh(10.0 * err * err)
     return reward
 
 
