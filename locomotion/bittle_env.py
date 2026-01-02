@@ -308,8 +308,6 @@ class BittleEnv(PipelineEnv):
         'energy': self._reward_energy(joint_vel, pipeline_state.qfrc_actuator),
     }
     
-    jax.debug.print("base_height reward mean: {x}", x=jp.mean(rewards['base_height']))
-    
     # Scale rewards
     rewards = {k: v * self.reward_config.rewards.scales[k] for k, v in rewards.items()}
     
