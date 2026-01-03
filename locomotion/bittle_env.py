@@ -290,22 +290,22 @@ class BittleEnv(PipelineEnv):
 
     # Rewards
     rewards = {
-        'tracking_lin_vel': self._reward_tracking_lin_vel(state.info['command'], x, xd),
-        'tracking_ang_vel': self._reward_tracking_ang_vel(state.info['command'], x, xd),
+        #'tracking_lin_vel': self._reward_tracking_lin_vel(state.info['command'], x, xd),
+        #'tracking_ang_vel': self._reward_tracking_ang_vel(state.info['command'], x, xd),
         'base_height': self._reward_base_height(x),
-        'lin_vel_z': self._reward_lin_vel_z(xd),
-        'ang_vel_xy': self._reward_ang_vel_xy(xd),
+        #'lin_vel_z': self._reward_lin_vel_z(xd),
+        #'ang_vel_xy': self._reward_ang_vel_xy(xd),
         'orientation': self._reward_orientation(x),
-        'torques': self._reward_torques(pipeline_state.qfrc_actuator),
-        'action_rate': self._reward_action_rate(action, state.info['last_act']),
-        'joint_acc': self._reward_joint_acc(joint_vel, state.info['last_joint_vel']),
-        'stand_still': self._reward_stand_still(state.info['command'], joint_vel),
-        'feet_air_time': self._reward_feet_air_time(
-            state.info['feet_air_time'], first_contact, state.info['command']
-        ),
-        'foot_slip': self._reward_foot_slip(pipeline_state, contact_filt),
-        'termination': self._reward_termination(done, state.info['step']),
-        'energy': self._reward_energy(joint_vel, pipeline_state.qfrc_actuator),
+        #'torques': self._reward_torques(pipeline_state.qfrc_actuator),
+        #'action_rate': self._reward_action_rate(action, state.info['last_act']),
+        #'joint_acc': self._reward_joint_acc(joint_vel, state.info['last_joint_vel']),
+        #'stand_still': self._reward_stand_still(state.info['command'], joint_vel),
+        #'feet_air_time': self._reward_feet_air_time(
+        #    state.info['feet_air_time'], first_contact, state.info['command']
+        #),
+        #'foot_slip': self._reward_foot_slip(pipeline_state, contact_filt),
+        #'termination': self._reward_termination(done, state.info['step']),
+        #'energy': self._reward_energy(joint_vel, pipeline_state.qfrc_actuator),
     }
     
     # Scale rewards
@@ -336,7 +336,8 @@ class BittleEnv(PipelineEnv):
 
     # Metrics
     state.metrics['total_dist'] = jp.linalg.norm(xd.vel[self._base_body_id, :2]) * self.dt
-    state.metrics.update(state.info['rewards'])
+    #state.metrics.update(state.info['rewards'])
+    state.metrics['reward'] = reward #temporary replacement
 
     done = jp.float32(done)
     obs = self._get_obs(pipeline_state, state.info, state.obs)
